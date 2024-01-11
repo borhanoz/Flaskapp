@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+    <h3>تفاصيل السلة</h3>
+    <ul>
+        {% for item in cart %}
+            <li>{{ item.quantity }} x {{ item.product_id }} - السعر الإجمالي: {{ item.total_price }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>تفاصيل الدفع</h3>
+    <form id="payment-form" action="{{ url_for('submit_payment') }}" method="post">
+        <label for="card-number">رقم البطاقة:</label>
+        <input type="text" id="card-number" name="card-number" required>
+
+        <label for="expiration-date">تاريخ الانتهاء:</label>
+        <input type="text" id="expiration-date" name="expiration-date" required>
+
+        <label for="cvv">رقم CVV:</label>
+        <input type="text" id="cvv" name="cvv" required>
+
+        <label for="card-holder-name">الاسم على البطاقة:</label>
+        <input type="text" id="card-holder-name" name="card-holder-name" required>
+
+        <button type="submit">استمرار</button>
+    </form>
+</div>
+
+{% endblock %}

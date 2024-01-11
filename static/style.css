@@ -1,0 +1,21 @@
+.pill {
+    margin-bottom: 5px;
+    /* padding: 5px; */
+    padding-top: 7px;
+    background-color: #F8BBD0;
+    border-bottom-left-radius: 20px; 
+    border-top-right-radius: 20px; 
+}
+.card{
+    
+    border-bottom-left-radius: 20px; 
+    border-top-right-radius: 20px; 
+}
+body{
+    font-family: 'Noto Naskh Arabic', sans-serif;
+    font-size: 17px;
+}
+
+h1, h2, h3 {
+    font-family: Cairo,'Noto Naskh Arabic', serif; /* Apply to headings */
+  }

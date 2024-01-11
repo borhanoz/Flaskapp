@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!-- <div class="bg-body-tertiary p-5 rounded text-center">
+    <h1>اهلا بكم في كاب كاك!</h1>
+  </div> -->
+
+  <h1><b><i>منتجاتنا</i></b></h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4">  {% for product in products %}
+        <div class="col">
+            <div class="card">
+              <img src="data:image/jpeg;base64,{{ product[4] }}" class="card-img-top" alt="{{ product[1] }}">
+ 
+                <div class="card-body">
+                    <h5 class="card-title">{{ product[1] }}</h5>
+                    <p class="card-text">السعر: {{ product[2] }} SAR</p>
+                    <p class="card-text">التقييم: {{ convert_to_stars(product[3]) }}</p>
+                    <form method="POST" action="{{ url_for('add_to_cart', product_id=product[0]) }}">
+                      <button class="btn btn-primary add-to-cart-btn" data-product-id="{{ product[0] }}">اضف للسلة</button>
+                     
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

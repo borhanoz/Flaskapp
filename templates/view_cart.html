@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <!-- Include Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-2 d-flex justify-content-center align-items-center">
+        <div class="card p-4 pt-2" style="width: 450px;">
+            
+            <!-- Display total price -->
+            <div class="pill">
+            <h2 class="card-title mt-1" style="text-align: center;">الدفع </h2>
+            </div>
+            
+            <p style="text-align: center; color: black;"> <b>{{ total_price }}</b></p>
+            <p class="mb-3" style="text-align: center;">القيمة الاجمالية</p>
+            <!-- Add your coupon code form or display logic here -->
+            <button type="button" class="btn btn-outline-warning mb-2">
+              كوبون تخفيض
+            </button>
+            <!--  payment method display logic here -->
+            <button type="button" class="btn btn-outline-primary">
+                الدفع عن طريق Apple pay
+              </button>
+         
+
+            <!-- Payment form -->
+            <div class="card mt-2 p-2">
+                <h4 class="mt-2 mb-2">
+                    الدفع باستخدام البطاقة البنكية
+                </h4>
+                    <form id="payment-form" action="{{ url_for('submit_payment') }}" method="post">
+                        <div class="form-group">
+                            <label for="card-number">رقم البطاقة:</label>
+                            <input type="text" class="form-control" id="card-number" name="card-number" required placeholder="### ### ###">
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="expiration-date">تاريخ الانتهاء:</label>
+                            <input type="text" class="form-control" id="expiration-date" name="expiration-date" required placeholder="DD-MM-YY">
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="cvv">رقم CVV:</label>
+                            <input type="text" class="form-control" id="cvv" name="cvv" required placeholder="xxx">
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="card-holder-name">الاسم على البطاقة:</label>
+                            <input type="text" class="form-control" id="card-holder-name" name="card-holder-name" required placeholder="ادخل اسمك">
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary mt-1" style="width: 100%;">استمرار</button>
+                    </form>
+            </div>
+           
+            
+        </div>
+    </div>
+
+{% endblock %}
